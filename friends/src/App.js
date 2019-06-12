@@ -1,4 +1,5 @@
 import React, { useState, useEffect, } from 'react';
+import {BrowserRouter as Router, Route, NavLink,} from 'react-router-dom';
 import axios from 'axios';
 import ListContainer from './components/FriendList/ListContainer';
 import NewFriendForm from './components/NewFriend/NewFriendForm';
@@ -36,9 +37,22 @@ function App() {
 
   return(
     <div>
-      {errorMsg && <div>{errorMsg}</div>}
-      <ListContainer friends={friends} />
-      <NewFriendForm addSubmitHandler={handleAddSubmit} />
+      <Router>
+        {errorMsg && <div>{errorMsg}</div>}
+        <ul>
+          <li><NavLink to='/'>Friends</NavLink></li>
+          <li><NavLink to='/new_friend'>New Friend</NavLink></li>
+        </ul>
+        <Route
+          path='/'
+          exact
+          render={props => <ListContainer friends={friends} {...props} />}
+        />
+        <Route
+          path='/new_friend'
+          render={props => <NewFriendForm addSubmitHandler={handleAddSubmit} {...props} />}
+        />
+      </Router>
     </div>
   );
 }
