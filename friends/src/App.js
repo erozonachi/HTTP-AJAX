@@ -21,6 +21,10 @@ function App() {
     })
   };
 
+  useEffect(() => {
+    getFriends();
+  });
+
   return;
 }
 
