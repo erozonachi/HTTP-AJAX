@@ -20,17 +20,24 @@ const FormContainer = styled.div`
     align-items: center;
     width: 100%;
     border-radius: .5em;
-    box-shadow: 4px gray;
+    box-shadow: 4px 4px 4px 4px #ccc;
 
     > input, > button {
       outline: none;
-      border: none;
       width: 90%;
-      padding: .5em;
+      padding: 1em;
+      margin: 1em 0;
+    }
+    > input {
+      border: 1px solid #aaa;
     }
     > button {
+      border: none;
+      font-size: 1.8rem;
+      font-weight: bold;
       background-color: teal;
       color: white;
+      cursor: pointer;
     }
   }
 `;
