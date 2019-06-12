@@ -10,6 +10,7 @@ const FriendsList = styled.div`
   > h2 {
     font-size: 2.4rem;
     font-weight: bolder;
+    padding: .5em 0;
   }
   > ul {
     display: flex;
