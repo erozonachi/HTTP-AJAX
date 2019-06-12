@@ -3,6 +3,8 @@ import Axios from 'axios';
 import ListContainer from './components/FriendList/ListContainer';
 
 function App() {
+  const url = `http://localhost:5000/friends`;
+
   const [friends, setFriends] = useState([]);
   const [errorMsg, setErrorMsg] = useState(``);
   const [spinner, setSpinner] = useState(false);
@@ -10,7 +12,7 @@ function App() {
   const getFriends = () => {
     setSpinner(true);
 
-    Axios(`http://localhost:5000/friends`)
+    Axios(url)
     .then(response => {
       setFriends(response.data);
     })
@@ -21,6 +23,14 @@ function App() {
       setSpinner(false);
     })
   };
+
+  const handleAddSubmit = (newFriend) => {
+    Axios.post(url, newFriend)
+    .then(response => {
+      setFriends(response.data);
+    })
+    .catch(err => setErrorMsg(err.message));
+  }
 
   useEffect(() => {
     getFriends();
