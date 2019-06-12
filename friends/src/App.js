@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, NavLink,} from 'react-router-dom';
 import axios from 'axios';
 import ListContainer from './components/FriendList/ListContainer';
 import NewFriendForm from './components/NewFriend/NewFriendForm';
+import AppContainer from './StyledComponents/AppContainer';
 
 function App() {
   const url = `http://localhost:5000/friends`;
@@ -36,7 +37,7 @@ function App() {
   }
 
   return(
-    <div>
+    <AppContainer>
       <Router>
         {errorMsg && <div>{errorMsg}</div>}
         <ul>
@@ -53,7 +54,7 @@ function App() {
           render={props => <NewFriendForm addSubmitHandler={handleAddSubmit} {...props} />}
         />
       </Router>
-    </div>
+    </AppContainer>
   );
 }
 
