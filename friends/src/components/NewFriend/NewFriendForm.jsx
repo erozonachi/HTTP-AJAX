@@ -1,4 +1,5 @@
 import React, { useState, } from 'react';
+import FormContainer from './StyledComponents/FormContainer';
 
 export default function NewFriendForm(props) {
   const [name, setName] = useState('');
@@ -30,7 +31,7 @@ export default function NewFriendForm(props) {
   }
 
   return(
-    <div>
+    <FormContainer>
       <h2>Add New Friend</h2>
       <form onSubmit={handleSubmit}>
         <input onChange={handleOnChange} value={name} placeholder='Enter Name' />
@@ -38,6 +39,6 @@ export default function NewFriendForm(props) {
         <input onChange={handleOnChange} value={email} placeholder='Enter Email' />
         <button type='submit'>Add Friend</button>
       </form>
-    </div>
+    </FormContainer>
   );
 }
