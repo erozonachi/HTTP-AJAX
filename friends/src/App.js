@@ -1,46 +1,44 @@
 import React, { useState, useEffect, } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import ListContainer from './components/FriendList/ListContainer';
+import NewFriendForm from './components/NewFriend/NewFriendForm';
 
 function App() {
   const url = `http://localhost:5000/friends`;
 
   const [friends, setFriends] = useState([]);
   const [errorMsg, setErrorMsg] = useState(``);
-  const [spinner, setSpinner] = useState(false);
 
-  const getFriends = () => {
-    setSpinner(true);
+  useEffect(() => {
+    getFriends();
+  });
 
-    Axios(url)
+  function getFriends() {
+
+    axios.get(url)
     .then(response => {
-      setFriends(response.data);
+      if(JSON.stringify(friends) !== JSON.stringify(response.data)) {
+        setFriends(response.data);
+      }
     })
     .catch(err => {
-      setErrorMsg(err.statusText);
-    })
-    .finally(() => {
-      setSpinner(false);
-    })
-  };
+      setErrorMsg(err.message);
+    });
+  }
 
   const handleAddSubmit = (newFriend) => {
-    Axios.post(url, newFriend)
+    axios.post(url, newFriend)
     .then(response => {
       setFriends(response.data);
     })
     .catch(err => setErrorMsg(err.message));
   }
 
-  useEffect(() => {
-    getFriends();
-  });
-
   return(
     <div>
-      {spinner && <div>Loading friends...</div>}
       {errorMsg && <div>{errorMsg}</div>}
       <ListContainer friends={friends} />
+      <NewFriendForm addSubmitHandler={handleAddSubmit} />
     </div>
   );
 }

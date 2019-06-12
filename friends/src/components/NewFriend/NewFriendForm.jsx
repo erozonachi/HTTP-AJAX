@@ -1,30 +1,31 @@
 import React, { useState, } from 'react';
 
 export default function NewFriendForm(props) {
-  const [friend, setFriend] = useState({name: '', age: '', email: '',});
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleOnChange = (event) => {
-    const friendData = friend;
 
     if(event.target.placeholder.includes(`Name`)) {
-      friendData.name = event.target.value;
-      setFriend(friendData);
+      setName(event.target.value);
     }
     if(event.target.placeholder.includes(`Age`)) {
-      friendData.age = event.target.value;
-      setFriend(friendData);
+      setAge(event.target.value);
     }
     if(event.target.placeholder.includes(`Email`)) {
-      friendData.email = event.target.value;
-      setFriend(friendData);
+      setEmail(event.target.value);
     }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (friend.name && friend.age && friend.email) {
-      props.addSubmitHandler(friend);
+    if (name && age && email) {
+      props.addSubmitHandler({name: name, age: age, email: email});
+      setName('');
+      setAge('');
+      setEmail('');
     }
   }
 
@@ -32,9 +33,9 @@ export default function NewFriendForm(props) {
     <div>
       <h2>Add New Friend</h2>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleOnChange} value={friend.name} placeholder='Enter Name' />
-        <input onChange={handleOnChange} value={friend.age} placeholder='Enter Age' />
-        <input onChange={handleOnChange} value={friend.email} placeholder='Enter Email' />
+        <input onChange={handleOnChange} value={name} placeholder='Enter Name' />
+        <input onChange={handleOnChange} value={age} placeholder='Enter Age' />
+        <input onChange={handleOnChange} value={email} placeholder='Enter Email' />
         <button type='submit'>Add Friend</button>
       </form>
     </div>
