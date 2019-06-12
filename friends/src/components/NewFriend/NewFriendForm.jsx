@@ -20,13 +20,22 @@ export default function NewFriendForm(props) {
     }
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (friend.name && friend.age && friend.email) {
+      props.addSubmitHandler(friend);
+    }
+  }
+
   return(
     <div>
       <h2>Add New Friend</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input onChange={handleOnChange} value={friend.name} placeholder='Enter Name' />
         <input onChange={handleOnChange} value={friend.age} placeholder='Enter Age' />
         <input onChange={handleOnChange} value={friend.email} placeholder='Enter Email' />
+        <button type='submit'>Add Friend</button>
       </form>
     </div>
   );
