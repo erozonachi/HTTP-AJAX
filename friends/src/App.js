@@ -1,5 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import Axios from 'axios';
+import ListContainer from './components/FriendList/ListContainer';
 
 function App() {
   const [friends, setFriends] = useState([]);
@@ -25,7 +26,13 @@ function App() {
     getFriends();
   });
 
-  return;
+  return(
+    <div>
+      {spinner && <div>Loading friends...</div>}
+      {errorMsg && <div>{errorMsg}</div>}
+      <ListContainer friends={friends} />
+    </div>
+  );
 }
 
 export default App;
