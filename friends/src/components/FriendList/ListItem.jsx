@@ -4,9 +4,9 @@ import FriendItem from './StyledComponents/FriendItem';
 export default function ListItem(props) {
   return(
     <FriendItem>
-      <span>{props.friend.name}</span>
-      <span>{props.friend.age}</span>
-      <span>{props.friend.email}</span>
+      <h3>{props.friend.name}</h3>
+      <span><em>Age:&nbsp;</em>{props.friend.age}</span>
+      <span><em>Email:&nbsp;</em>{props.friend.email}</span>
     </FriendItem>
   );
 }
