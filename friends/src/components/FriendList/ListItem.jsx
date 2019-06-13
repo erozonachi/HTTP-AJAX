@@ -1,6 +1,7 @@
 import React from 'react';
 import FriendItem from './StyledComponents/FriendItem';
 import { Link, } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function ListItem(props) {
   const handleDelete = () => {
@@ -19,4 +20,13 @@ export default function ListItem(props) {
       </div>
     </FriendItem>
   );
+}
+
+ListItem.propTypes = {
+  friend: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    sex: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+  delHandler: PropTypes.func.isRequired,
 }
