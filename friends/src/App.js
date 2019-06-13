@@ -36,6 +36,10 @@ function App() {
     .catch(err => setErrorMsg(err.message));
   }
 
+  const getAFriend = (id) => {
+    return friends.filter(friend => friend.id === parseInt(id))[0];
+  }
+
   return(
     <AppContainer>
       <Router>
