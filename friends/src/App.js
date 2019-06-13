@@ -36,8 +36,8 @@ function App() {
     .catch(err => setErrorMsg(err.message));
   }
 
-  const handleEditSubmit = (friend) => {
-    axios.put(url, friend)
+  const handleEditSubmit = (friend, id) => {
+    axios.put(`${url}/${id}`, friend)
     .then(response => {
       setFriends(response.data);
     })

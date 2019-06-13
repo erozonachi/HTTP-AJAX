@@ -2,7 +2,7 @@ import React, { useState, } from 'react';
 import FormContainer from './StyledComponents/FormContainer';
 
 export default function NewFriendForm(props) {
-  const id = props.match.params.id.trim();
+  let id = props.match.params.id.trim();
   const initialFormState = id? props.getFriend(id) : {
     name: '',
     age: '',
@@ -28,8 +28,8 @@ export default function NewFriendForm(props) {
     event.preventDefault();
 
     if (friend.name && friend.age && friend.email) {
-      props.addSubmitHandler(friend);
-      setFriend(initialFormState);
+      id? props.editSubmitHandler(friend, id) : props.addSubmitHandler(friend);
+      props.history.push('/');
     }
   }
 
