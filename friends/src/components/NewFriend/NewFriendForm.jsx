@@ -2,7 +2,8 @@ import React, { useState, } from 'react';
 import FormContainer from './StyledComponents/FormContainer';
 
 export default function NewFriendForm(props) {
-  const initialFormState = {
+  const id = props.match.params.id.trim();
+  const initialFormState = id? props.getFriend(id) : {
     name: '',
     age: '',
     email: '',
