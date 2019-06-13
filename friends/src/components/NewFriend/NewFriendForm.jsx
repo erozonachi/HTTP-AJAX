@@ -3,21 +3,22 @@ import FormContainer from './StyledComponents/FormContainer';
 
 export default function NewFriendForm(props) {
   let id = props.match.params.id.trim();
-  const initialFormState = (id? props.getFriend(id) : {
+  const initialFriendState = {
     name: '',
     age: '',
     email: '',
-  });
+  };
+  const initialFormState = (id? props.getFriend(id) : initialFriendState);
 
   const [friend, setFriend] = useState(initialFormState);
 
   useEffect(() => {
     return () => {
       if (props.match.params.id.trim()) {
-        setFriend({name: '', age: '', email: '',});
+        setFriend({...initialFriendState});
       }
     }
-  }, [props.match.params.id]);
+  }, [props.match.params.id, initialFriendState]);
 
   const handleOnChange = (event) => {
 

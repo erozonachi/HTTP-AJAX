@@ -36,7 +36,7 @@ const FriendItem = styled.li`
       background-color: #610000;
       color: white;
       margin: 0 .5em;
-      cursor: point;
+      cursor: pointer;
     }
     > a {
       button {
