@@ -7,6 +7,7 @@ export default function NewFriendForm(props) {
     name: '',
     age: '',
     email: '',
+    sex: '',
   };
   const initialFormState = (id? props.getFriend(id) : initialFriendState);
 
@@ -31,12 +32,15 @@ export default function NewFriendForm(props) {
     if(event.target.placeholder.includes(`Email`)) {
       setFriend({...friend, email: event.target.value,});
     }
+    if(event.target.placeholder.includes(`Gender`)) {
+      setFriend({...friend, sex: event.target.value,});
+    }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (friend.name && friend.age && friend.email) {
+    if (friend.name && friend.age && friend.email && friend.sex) {
       id? props.editSubmitHandler(friend, id) : props.addSubmitHandler(friend);
       id = null;
       props.history.push('/');
@@ -49,6 +53,7 @@ export default function NewFriendForm(props) {
       <form onSubmit={handleSubmit}>
         <input onChange={handleOnChange} value={friend.name} placeholder='Enter Name' />
         <input onChange={handleOnChange} value={friend.age} placeholder='Enter Age' />
+        <input onChange={handleOnChange} value={friend.sex} placeholder='Enter Gender' />
         <input onChange={handleOnChange} value={friend.email} placeholder='Enter Email' />
         <button type='submit'>{props.match.params.id.trim()? 'Edit Friend' : 'Add Friend'}</button>
       </form>
