@@ -42,7 +42,7 @@ function App() {
         {errorMsg && <div>{errorMsg}</div>}
         <ul>
           <li><NavLink to='/'>Friends</NavLink></li>
-          <li><NavLink to='/new_friend'>New Friend</NavLink></li>
+          <li><NavLink to='/new_friend/ '>New Friend</NavLink></li>
         </ul>
         <Route
           path='/'
@@ -50,7 +50,7 @@ function App() {
           render={props => <ListContainer friends={friends} {...props} />}
         />
         <Route
-          path='/new_friend'
+          path='/new_friend/:id'
           render={props => <NewFriendForm addSubmitHandler={handleAddSubmit} {...props} />}
         />
       </Router>
