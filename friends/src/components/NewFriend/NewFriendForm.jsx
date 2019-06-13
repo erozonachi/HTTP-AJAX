@@ -32,12 +32,12 @@ export default function NewFriendForm(props) {
 
   return(
     <FormContainer>
-      <h2>Add New Friend</h2>
+      <h2>{props.match.params.id.trim()? 'Edit Existing Friend' : 'Add New Friend'}</h2>
       <form onSubmit={handleSubmit}>
         <input onChange={handleOnChange} value={name} placeholder='Enter Name' />
         <input onChange={handleOnChange} value={age} placeholder='Enter Age' />
         <input onChange={handleOnChange} value={email} placeholder='Enter Email' />
-        <button type='submit'>Add Friend</button>
+        <button type='submit'>{props.match.params.id.trim()? 'Edit Friend' : 'Add Friend'}</button>
       </form>
     </FormContainer>
   );
