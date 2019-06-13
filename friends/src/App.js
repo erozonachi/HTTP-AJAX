@@ -67,7 +67,7 @@ function App() {
         <Route
           path='/'
           exact
-          render={props => <ListContainer friends={friends} {...props} />}
+          render={props => <ListContainer friends={friends} delHandler={handleDelete} {...props} />}
         />
         <Route
           path='/new_friend/:id'

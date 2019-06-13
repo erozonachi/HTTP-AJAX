@@ -7,7 +7,11 @@ export default function ListContainer(props) {
     <FriendsList>
       <h2>Friends List</h2>
       <ul>
-        {props.friends.map(friend => <ListItem key={`${friend.id}`} friend={friend} />)}
+        {props.friends.map(friend => <ListItem 
+          key={`${friend.id}`} 
+          friend={friend} 
+          delHandler={props.delHandler}
+        />)}
       </ul>
     </FriendsList>
   );
