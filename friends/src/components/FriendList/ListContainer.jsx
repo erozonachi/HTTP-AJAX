@@ -1,6 +1,7 @@
 import React from 'react';
 import ListItem from './ListItem';
 import FriendsList from './StyledComponents/FriendsList';
+import PropTypes from 'prop-types';
 
 export default function ListContainer(props) {
   return(
@@ -16,3 +17,8 @@ export default function ListContainer(props) {
     </FriendsList>
   );
 }
+
+ListContainer.propTypes = {
+  friends: PropTypes.arrayOf(PropTypes.object).isRequired,
+  delHandler: PropTypes.func.isRequired,
+};
