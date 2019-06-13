@@ -36,6 +36,14 @@ function App() {
     .catch(err => setErrorMsg(err.message));
   }
 
+  const handleEditSubmit = (friend) => {
+    axios.put(url, friend)
+    .then(response => {
+      setFriends(response.data);
+    })
+    .catch(err => setErrorMsg(err.message));
+  }
+
   const getAFriend = (id) => {
     return friends.filter(friend => friend.id === parseInt(id))[0];
   }
@@ -55,7 +63,12 @@ function App() {
         />
         <Route
           path='/new_friend/:id'
-          render={props => <NewFriendForm addSubmitHandler={handleAddSubmit} {...props} />}
+          render={props => <NewFriendForm 
+            addSubmitHandler={handleAddSubmit} 
+            editSubmitHandler={handleEditSubmit}
+            getFriend={getAFriend}
+            {...props} 
+          />}
         />
       </Router>
     </AppContainer>
