@@ -24,6 +24,26 @@ const FriendItem = styled.li`
       font-weight: bold;
     }
   }
+  > div {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 1em 0;
+    button {
+      border: none;
+      outline: none;
+      padding: .5em;
+      background-color: #610000;
+      color: white;
+      margin: 0 .5em;
+      cursor: point;
+    }
+    > a {
+      button {
+        background-color: teal;
+      }
+    }
+  }
 `;
 
 export default FriendItem;
