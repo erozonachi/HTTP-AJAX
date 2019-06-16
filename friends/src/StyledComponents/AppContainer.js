@@ -9,14 +9,13 @@ const AppContainer = styled.div`
     margin: 1em 0;
 
     li {
-      padding: 1em;
-      background-color: #555;
-      color: white;
-
       > a {
         text-decoration: underline;
+        padding: 1em;
+        background-color: #555;
+        color: white;
         &:link, &:visited {
-          color: inherit;
+          color: white;
         }
         &:hover {
           color: #ccc;

@@ -15,36 +15,42 @@ let friends = [
     name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com',
+    sex: 'Male',
   },
   {
     id: 2,
     name: 'Austen',
     age: 32,
     email: 'austen@lambdaschool.com',
+    sex: 'Male',
   },
   {
     id: 3,
     name: 'Ryan',
     age: 35,
     email: 'ryan@lambdaschool.com',
+    sex: 'Male'
   },
   {
     id: 4,
     name: 'Sean',
     age: 35,
     email: 'sean@lambdaschool.com',
+    sex: 'Male',
   },
   {
     id: 5,
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com',
+    sex: 'Female',
   },
   {
     id: 6,
     name: 'Luis',
     age: 47,
     email: 'luis@lambdaschool.com',
+    sex: 'Male',
   },
 ];
 

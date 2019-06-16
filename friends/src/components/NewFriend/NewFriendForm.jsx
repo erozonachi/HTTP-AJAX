@@ -1,43 +1,62 @@
-import React, { useState, } from 'react';
+import React, { useEffect, } from 'react';
 import FormContainer from './StyledComponents/FormContainer';
 
 export default function NewFriendForm(props) {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [email, setEmail] = useState('');
+  let id = props.match.params.id.trim();
+  const initialFriendState = {
+    name: '',
+    age: '',
+    email: '',
+    sex: '',
+  };
+  const initialVals = (id? props.getFriend(id) : initialFriendState);
 
-  const handleOnChange = (event) => {
+  const nameInput = React.createRef();
+  const ageInput = React.createRef();
+  const sexInput = React.createRef();
+  const emailInput = React.createRef();
 
-    if(event.target.placeholder.includes(`Name`)) {
-      setName(event.target.value);
-    }
-    if(event.target.placeholder.includes(`Age`)) {
-      setAge(event.target.value);
-    }
-    if(event.target.placeholder.includes(`Email`)) {
-      setEmail(event.target.value);
-    }
-  }
+  useEffect(() => {
+    nameInput.current.value = initialVals.name;
+    ageInput.current.value = initialVals.age;
+    sexInput.current.value = initialVals.sex;
+    emailInput.current.value = initialVals.email;
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (name && age && email) {
-      props.addSubmitHandler({name: name, age: age, email: email});
-      setName('');
-      setAge('');
-      setEmail('');
+    if (nameInput.current.value && ageInput.current.value && 
+      emailInput.current.value && sexInput.current.value) {
+      const friend = {
+        name: nameInput.current.value,
+        age: ageInput.current.value,
+        sex: sexInput.current.value,
+        email: emailInput.current.value,
+      }
+      id? props.editSubmitHandler(friend, id) : props.addSubmitHandler(friend);
+      id = null;
+      props.history.push('/');
     }
   }
 
   return(
     <FormContainer>
-      <h2>Add New Friend</h2>
+      <h2>{props.match.params.id.trim()? 'Edit Existing Friend' : 'Add New Friend'}</h2>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleOnChange} value={name} placeholder='Enter Name' />
-        <input onChange={handleOnChange} value={age} placeholder='Enter Age' />
-        <input onChange={handleOnChange} value={email} placeholder='Enter Email' />
-        <button type='submit'>Add Friend</button>
+        <input  
+          ref={nameInput} 
+          placeholder='Enter Name' />
+        <input 
+          ref={ageInput} 
+          placeholder='Enter Age' />
+        <input 
+          ref={sexInput} 
+          placeholder='Enter Gender' />
+        <input 
+          ref={emailInput} 
+          placeholder='Enter Email' />
+        <button type='submit'>{props.match.params.id.trim()? 'Edit Friend' : 'Add Friend'}</button>
       </form>
     </FormContainer>
   );

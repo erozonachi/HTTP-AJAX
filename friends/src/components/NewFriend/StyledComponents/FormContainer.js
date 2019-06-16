@@ -5,6 +5,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   max-width: 500px;
   width: 100%;
 
@@ -19,6 +20,7 @@ const FormContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 1em 0;
     border-radius: .5em;
     box-shadow: 4px 4px 4px 4px #ccc;
 

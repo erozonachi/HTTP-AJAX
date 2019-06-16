@@ -14,7 +14,9 @@ const FriendsList = styled.div`
   }
   > ul {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: space-evenly;
     width: 100%;
   }
 `;
